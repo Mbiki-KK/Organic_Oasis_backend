@@ -5,11 +5,13 @@ one:
   desc: MyString
   price: 1.5
   availability: MyString
-  category: one
+  category_id: 1
+  user: one
 
 two:
   name: MyString
   desc: MyString
   price: 1.5
   availability: MyString
-  category: two
+  category_id: 1
+  user: two

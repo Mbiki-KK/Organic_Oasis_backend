@@ -9,10 +9,10 @@ validates :username, presence:true, uniqueness: true
 validates :password, length:{minimum:6}, if: -> {new_record?||  !password.nil?}
 
 
-
+has_many :products, foreign_key: :user_id, dependent: :destroy
   has_many :orders
   has_many :reviews
-  has_many :products, through: :orders
+
 
 
   def set_default_role

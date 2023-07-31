@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Authentication routes
-  post '/login', to: 'authenticate#create'
+  post '/login', to: 'authentication#login'
   post '/register', to: 'users#create'
 
   # RESTful routes for reviews, products, and users

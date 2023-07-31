@@ -10,6 +10,6 @@ module JwtHandler
   def self.decode(token)
 
     deceoded=JWT.decode(token, SECRET_KEY)[0]
-    HashWithIdiffrentAccess.new deceoded
+    HashWithIndifferentAccess.new deceoded
   end
 end

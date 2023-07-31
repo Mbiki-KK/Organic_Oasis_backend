@@ -1,6 +1,9 @@
 require 'faker'
 
-# Seed Categories
+
+if Rails.application.config.x.seed_data
+  # Your existing seed data code here
+  # Seed Categories
 categories = []
 5.times do
   categories << Category.create!(
@@ -11,6 +14,12 @@ end
 
 # Seed Users and Addresses
 # Seed Users and Addresses
+require 'faker'
+
+# Seed Categories
+# ...
+
+# Seed Users
 require 'faker'
 
 # Seed Categories
@@ -29,41 +38,58 @@ users = []
     username: Faker::Internet.unique.username,
     street_address: Faker::Address.street_address,
     city: Faker::Address.city,
-   #postalcode: Faker::Address.postal_code
+    postal_code: Faker::Address.zip_code,
+    role: 'user' # Default role for regular users
   )
 
-  # You can access the address properties like this:
- #
- # puts user.state
- # puts user.zipcode
+  users << user
 end
 
-# Rest of the seed data...
+# Seed Sellers
+sellers = []
 
+2.times do
+  seller = User.create!(
+    name: Faker::Name.unique.name,
+    email: Faker::Internet.unique.email,
+    password: 'password',
+    contacts: Faker::PhoneNumber.cell_phone,
+    user_type: 'customer',
+    username: Faker::Internet.unique.username,
+    street_address: Faker::Address.street_address,
+    city: Faker::Address.city,
+    postal_code: Faker::Address.zip_code,
+    role: 'seller'
+  )
 
+  sellers << seller
+end
 
 # Seed Products
 products = []
 20.times do
-  products << Product.create!(
+  product = Product.create!(
     name: Faker::Food.unique.vegetables,
     desc: Faker::Food.description,
     price: Faker::Number.decimal(l_digits: 2),
     availability: 'In stock',
-    category: categories.sample,
-    #user: users.sample
+    user: sellers.sample # Associate the product with a random seller
   )
+
+  products << product
 end
 
 # Seed Reviews
 reviews = []
 50.times do
-  reviews << Review.create!(
+  review = Review.create!(
     comment: Faker::Restaurant.review,
     review_date: Faker::Date.between(from: 1.year.ago, to: Date.today),
     user: users.sample,
     product: products.sample
   )
+
+  reviews << review
 end
 
 # Seed Orders and Order Items
@@ -89,4 +115,5 @@ users.each do |user|
   end
 
   order.update(total_amount: total_amount) # Update the total_amount for the order
+end
 end

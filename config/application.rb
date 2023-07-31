@@ -22,10 +22,13 @@ module OrganicOasisBackend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+# Add this line at the bottom of the file
+config.x.seed_data = ENV.fetch('SEED_DATA', 'false') == 'true'
 
     # Configuration for the application, engines, and railties goes here.
     #
     config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
