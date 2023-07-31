@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def show
     review = Review.find_by(id: params[:id])
 
-    render json: review
+    render json: review, include: :users
   end
 
   def create
