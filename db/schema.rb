@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_085434) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_104253) do
   create_table "addresses", force: :cascade do |t|
     t.string "recipient_name"
     t.string "street_address"
@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_085434) do
     t.string "password_digest"
     t.string "contacts"
     t.string "address"
-    t.string "type"
+    t.string "user_type"
     t.integer "reviews_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
