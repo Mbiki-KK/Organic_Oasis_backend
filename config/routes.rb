@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'address/index'
+  get 'address/show'
+  get 'address/create'
+  get 'address/destroy'
   get 'reviews/index'
   get 'reviews/show'
   get 'reviews/create'
