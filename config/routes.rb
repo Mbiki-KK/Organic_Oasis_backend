@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
-  get 'reviews/show'
-  get 'reviews/create'
-  get 'reviews/destroy'
-  get 'products/index'
-  get 'products/show'
-  get 'products/create'
-  get 'products/destroy'
-  get 'users/index'
-  get 'users/show'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Authentication routes
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  post '/register', to: 'users#create'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # RESTful routes for reviews, products, and users
+  resources :reviews, only: [:index, :show, :create, :destroy]
+  resources :products, only: [:index, :show, :create, :destroy]
+  resources :users, only: [:index, :show]
+
+  # Route for refreshing the JWT token
+  post '/refresh', to: 'sessions#refresh'
 end
