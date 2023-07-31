@@ -1,74 +1,92 @@
-require "faker"
+require 'faker'
 
-
-
-
-# Helper method to generate a random date within a specified range
-def random_date(from: 1.year.ago, to: Time.current)
-  rand(from..to)
-end
-
-# Helper method to generate a random price within a specified range
-def random_price(min: 1, max: 20)
-  rand(min..max).round(2)
-end
-
-# Helper method to generate a random quantity within a specified range
-def random_quantity(min: 5, max: 100)
-  rand(min..max)
-end
-
-# Create some categories using faker
-10.times do
-  Category.create!(
-    name: Faker::Food.unique.ingredient,
+# Seed Categories
+categories = []
+5.times do
+  categories << Category.create!(
+    name: Faker::Food.unique.fruits,
     desc: Faker::Food.description
   )
 end
 
-# Create someUser (farmers and buyers)
-users = [
-  { name: "John Doe (Farmer)", email: "john@example.com", password: "password", contacts: "123-456-7890", address: "Farm Address 1", user_type: "Farmer" },
-  { name: "Jane Smith (Buyer)", email: "jane@example.com", password: "password", contacts: "987-654-3210", address: "123 Main St, City", user_type: "Buyer" }
-]
+# Seed Users and Addresses
+# Seed Users and Addresses
+require 'faker'
 
-User.create!(users)
+# Seed Categories
+# ...
 
-# Create some products using faker
-categories = Category.all
+# Seed Users
+users = []
+
+10.times do
+  user = User.create!(
+    name: Faker::Name.unique.name,
+    email: Faker::Internet.unique.email,
+    password: 'password',
+    contacts: Faker::PhoneNumber.cell_phone,
+    user_type: 'customer',
+    username: Faker::Internet.unique.username,
+    street_address: Faker::Address.street_address,
+    city: Faker::Address.city,
+   #postalcode: Faker::Address.postal_code
+  )
+
+  # You can access the address properties like this:
+ #
+ # puts user.state
+ # puts user.zipcode
+end
+
+# Rest of the seed data...
+
+
+
+# Seed Products
+products = []
 20.times do
-  Product.create!(
-    name: Faker::Food.unique.dish,
+  products << Product.create!(
+    name: Faker::Food.unique.vegetables,
     desc: Faker::Food.description,
-    price: random_price,
-    availability: ["In Season", "In Stock"].sample,
+    price: Faker::Number.decimal(l_digits: 2),
+    availability: 'In stock',
     category: categories.sample,
-    seller_id:User.find_by(name: "John Doe (Farmer)").id
+    #user: users.sample
   )
 end
 
-# Create some orders and order items
-orders = [
-  { user_id:User.find_by(name: "Jane Smith (Buyer)").id, order_date: random_date, total_amount: random_price },
-  { user_id:User.find_by(name: "Jane Smith (Buyer)").id, order_date: random_date, total_amount: random_price }
-]
-
-Order.create!(orders)
-
-# Create order items for each order
-orders.each do |order|
-  products = Product.all.sample(5)
-  products.each do |product|
-    OrderItem.create!(quantity: random_quantity, subtotal: product.price * random_quantity, order_id: order.id, product_id: product.id)
-  end
+# Seed Reviews
+reviews = []
+50.times do
+  reviews << Review.create!(
+    comment: Faker::Restaurant.review,
+    review_date: Faker::Date.between(from: 1.year.ago, to: Date.today),
+    user: users.sample,
+    product: products.sample
+  )
 end
 
-# Create some reviews
-reviews = [
-  { comment: "Delicious!", review_date: random_date, user_id:User.find_by(name: "Jane Smith (Buyer)").id, product_id: Product.first.id },
-  { comment: "Fresh and tasty!", review_date: random_date, user_id:User.find_by(name: "Jane Smith (Buyer)").id, product_id: Product.second.id },
-  { comment: "Great quality!", review_date: random_date, user_id:User.find_by(name: "Jane Smith (Buyer)").id, product_id: Product.third.id },
-]
+# Seed Orders and Order Items
+users.each do |user|
+  order = Order.create!(
+    user: user,
+    order_date: Faker::Date.between(from: 1.year.ago, to: Date.today),
+    total_amount: 0 # The actual total amount will be calculated based on order items
+  )
 
-Review.create!(reviews)
+  total_amount = 0 # Initialize the total_amount variable
 
+  rand(1..5).times do
+    product = products.sample
+    quantity = rand(1..5)
+    subtotal = product.price * quantity
+    order.order_items.create!(
+      quantity: quantity,
+      subtotal: subtotal,
+      product: product
+    )
+    total_amount += subtotal # Update the total_amount for each order item
+  end
+
+  order.update(total_amount: total_amount) # Update the total_amount for the order
+end
