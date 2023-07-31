@@ -18,6 +18,15 @@ class AddressController < ApplicationController
   end
 
   def destroy
+    review = Review.find_by(id: params[:id])
+
+    if review
+      review.destroy
+
+      render json: {message: "Deleted successfully"}
+    else
+      render json: {error: "Review not found"}, status: :not_found
+    end
   end
 
   private
