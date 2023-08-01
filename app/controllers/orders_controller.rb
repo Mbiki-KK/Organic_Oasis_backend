@@ -27,12 +27,12 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    product = Product.find_by(id: params[:id])
-      if product
-        product.destroy
+    order = Order.find_by(id: params[:id])
+      if order
+        order.destroy
         head :no_content
       else
-        render_error("Song not found")
+        render_error("Order not found")
       end
   end
 

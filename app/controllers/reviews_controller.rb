@@ -21,6 +21,13 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    review = Review.find_by(id: params[:id])
+      if review
+        review.destroy
+        head :no_content
+      else
+        render_error("Review not found")
+      end
   end
 
 

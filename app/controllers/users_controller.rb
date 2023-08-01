@@ -22,7 +22,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    user = User.find_by(id: params[:id])
+      if user
+        user.destroy
+        head :no_content
+      else
+        render_error("User not found")
+      end
   end
 
   private
