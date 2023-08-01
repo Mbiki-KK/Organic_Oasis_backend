@@ -1,25 +1,4 @@
 Rails.application.routes.draw do
-  get 'orders/index'
-  get 'orders/show'
-  get 'orders/create'
-  get 'orders/destroy'
-  # get 'categories/index' ,to: 'categories#index'
-  # get 'categories/show'
-  # get 'address/index'
-  # get 'address/show'
-  # get 'address/create'
-  # get 'address/destroy'
-  # get 'reviews/index'
-  # get 'reviews/show'
-  # get 'reviews/create'
-  # get 'reviews/destroy'
-  # get 'products/index'
-  # get 'products/show'
-  # get 'products/create'
-  # get 'products/destroy'
-  # get 'users/index'
-  # get 'users/show'
-
   resources :users
   resources :products
   resources :orders
