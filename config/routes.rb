@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'orders/index'
+  get 'orders/show'
+  get 'orders/create'
+  get 'orders/destroy'
   # get 'categories/index' ,to: 'categories#index'
   # get 'categories/show'
   # get 'address/index'

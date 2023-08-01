@@ -8,16 +8,16 @@ class ReviewsController < ApplicationController
   def show
     review = Review.find_by(id: params[:id])
 
-    render json: review, include: :users
+    render json: review, include: :users, :products
   end
 
   def create
-    review = Reviews.new(review_params)
-    if review
-      render json: review
-    else
-      render json: {error: "Review not found"}, status: :not_found
-    end
+    review = Review.new(review_params)
+      if review.save
+        render json: review, status: :ok
+      else
+        render json: { errors: "Cannot add review" }, status: :unprocessable_entity
+      end
   end
 
   def destroy
@@ -27,6 +27,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.permit(:review, :reviewer_name)
+    params.permit(:comment, :review_date, :user_id, :product_id)
   end
 end

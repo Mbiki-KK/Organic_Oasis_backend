@@ -13,8 +13,11 @@ class AddressController < ApplicationController
 
   def create
     address = Address.new(address_params)
-
-    render json: address
+      if address.save
+        render json: address, status: :ok
+      else
+        render json: { errors: "Cannot add address" }, status: :unprocessable_entity
+      end
   end
 
   def destroy
