@@ -1,15 +1,16 @@
-require "jwt"
-module JsonWebToken
-  extend ActiveSupport::Concern
-  SECRET_KEY = Rails.application.secret_key_base
+# app/controllers/concerns/json_web_token.rb
 
-  def jwt_encode(payload, exp = 24.hours.from_now)
-    payload[:exp] = exp.to_i
+require 'jwt'
+module JsonWebToken
+  SECRET_KEY = 'your_secret_key'  # Replace this with your actual secret key
+
+  def self.encode(payload)
     JWT.encode(payload, SECRET_KEY)
   end
 
-  def jwt_decode(token)
+  def self.decode(token)
     decoded = JWT.decode(token, SECRET_KEY)[0]
-    HashWithIndifferentAccess.new decoded
+    HashWithIndifferentAccess.new(decoded)
   end
 end
+

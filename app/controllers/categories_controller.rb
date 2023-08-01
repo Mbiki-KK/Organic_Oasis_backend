@@ -10,5 +10,5 @@ class CategoriesController < ApplicationController
 
     render json: category, status: :ok
   end
-  
+
 end

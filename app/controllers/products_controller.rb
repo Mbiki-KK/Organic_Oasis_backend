@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_request, only: [:show, :create, :destroy]
   def index
     @products = Product.all
 
