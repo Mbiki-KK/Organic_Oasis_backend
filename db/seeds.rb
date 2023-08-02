@@ -1,9 +1,5 @@
 require 'faker'
 
-
-if Rails.application.config.x.seed_data
-  # Your existing seed data code here
-  # Seed Categories
 categories = []
 5.times do
   categories << Category.create!(
@@ -12,20 +8,6 @@ categories = []
   )
 end
 
-# Seed Users and Addresses
-# Seed Users and Addresses
-require 'faker'
-
-# Seed Categories
-# ...
-
-# Seed Users
-require 'faker'
-
-# Seed Categories
-# ...
-
-# Seed Users
 users = []
 
 10.times do
@@ -116,4 +98,4 @@ users.each do |user|
 
   order.update(total_amount: total_amount) # Update the total_amount for the order
 end
-end
+
