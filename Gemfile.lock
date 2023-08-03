@@ -194,7 +194,7 @@ DEPENDENCIES
   jwt
   puma (~> 5.0)
   rack-cors
-  rails (~> 7.0.6)
+  rails (>= 7.0.0)
   rest-client
   sqlite3 (~> 1.4)
   tzinfo-data

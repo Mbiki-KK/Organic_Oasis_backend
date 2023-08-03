@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_222810) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_122605) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "desc"
@@ -44,11 +44,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_222810) do
     t.float "price"
     t.string "availability"
     t.integer "category_id"
-    t.integer "users_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.index ["users_id"], name: "index_products_on_users_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -83,7 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_222810) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"
-  add_foreign_key "products", "users", column: "users_id"
+  add_foreign_key "products", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
   add_foreign_key "users", "reviews", column: "reviews_id"
