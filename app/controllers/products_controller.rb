@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
 
-    render json: @products, except: [:created_at, :updated_at]
+    render json: @products, include: :category, except: [:created_at, :updated_at]
   end
 
   def show
@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.permit(:name, :desc, :price, :availability, :image, :category_id, :seller_id)
+    params.permit(:name, :desc, :price, :availability, :image, :category_id, :user_id)
   end
 
 end
