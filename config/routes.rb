@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   # Image routes
   post '/upload_image', to: 'images#upload_image'
+  post '/seller/products/:product_id/upload_image', to: 'seller/products#upload_image'
 end
