@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    render json: @users, status: :ok
+    render json: @users, status: :ok, except: [:created_at, :updated_at]
   end
 
   # GET /users/{username}
