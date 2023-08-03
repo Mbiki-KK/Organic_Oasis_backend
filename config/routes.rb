@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   resources :products
   resources :orders
   resources :reviews
-  resources :addresses
+  # resources :addresses
+
+ #custom routes
 
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+end
+
+
+# Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
-end
