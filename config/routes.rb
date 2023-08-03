@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   # Route for refreshing the JWT token
   post '/refresh', to: 'sessions#refresh'
+
+  # Image routes
+  post '/upload_image', to: 'images#upload_image'
 end

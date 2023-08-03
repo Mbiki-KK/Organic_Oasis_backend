@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
 
-    render json: @products except: [:created_at, :updated_at]
+    render json: @products, except: [:created_at, :updated_at]
   end
 
   def show
@@ -29,4 +29,11 @@ class ProductsController < ApplicationController
         render json: {error: "Product not found"}
       end
   end
+
+  private
+
+  def product_params
+    params.permit(:name, :desc, :price, :availability, :image, :category_id, :seller_id)
+  end
+
 end
