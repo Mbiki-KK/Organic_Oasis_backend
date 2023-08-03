@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    render json: @users, status: :ok, except: [:created_at, :updated_at]
+    render json: @users, status: :ok, except: [:password_digest, :created_at, :updated_at]
   end
 
   # GET /users/{username}
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(
-      :avatar, :name, :username, :email, :password, :password_confirmation
+      :image, :name, :username, :email, :password, :password_confirmation
     )
   end
 end
