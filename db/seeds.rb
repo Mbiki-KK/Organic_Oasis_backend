@@ -2,9 +2,9 @@
 # db/seeds.rb
 
 # Create fake data for Meat
-5.times do
+10.times do
   Meat.create(
-    name: Faker::Food.dish,
+    name: Faker::Food.meat,
     price: Faker::Commerce.price(range: 1..100.0),
     image_url: Faker::Placeholdit.image,
     description: Faker::Food.description
@@ -12,7 +12,7 @@
 end
 
 # Create fake data for Beverage
-5.times do
+10.times do
   Beverage.create(
     name: Faker::Drink.unique.beverage,
     price: Faker::Commerce.price(range: 1..100.0),
@@ -22,9 +22,9 @@ end
 end
 
 # Create fake data for Bakery
-5.times do
+10.times do
   Bakery.create(
-    name: Faker::Food.dish,
+    name: Faker::Food.cake,
     price: Faker::Commerce.price(range: 1..100.0),
     image_url: Faker::Placeholdit.image,
     description: Faker::Food.description
@@ -44,7 +44,7 @@ end
 # Create fake data for Cereal
 5.times do
   Cereal.create(
-    name: Faker::Food.dish,
+    name: Faker::Food.cereal,
     price: Faker::Commerce.price(range: 1..100.0),
     image_url: Faker::Placeholdit.image,
     description: Faker::Food.description
