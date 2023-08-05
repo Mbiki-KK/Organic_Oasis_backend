@@ -10,10 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_122605) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_05_184502) do
+  create_table "bakeries", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "image_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "beverages", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "image_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cereals", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "image_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dairies", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "image_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meats", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "image_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "image_url"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,22 +116,38 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_122605) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "spices", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "image_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
     t.string "contacts"
+    t.string "address_value"
     t.string "user_type"
     t.integer "reviews_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "username"
-    t.string "street_address"
-    t.string "city"
-    t.string "postal_code"
     t.string "role", default: "user"
     t.index ["reviews_id"], name: "index_users_on_reviews_id"
+  end
+
+  create_table "veggies_and_fruits", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "image_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "order_items", "orders"
