@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :categories
-
+  resources :meat, :beverage, :bakery, :spices, :cereal, :dairy, :offers, :veggies_and_fruits, only: [:index, :show, :create, :update, :destroy]
   # Route for refreshing the JWT token
   post '/refresh', to: 'sessions#refresh'
 
