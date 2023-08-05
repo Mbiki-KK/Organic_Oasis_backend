@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   post '/seller/products/:product_id/upload_image', to: 'seller/products#upload_image'
 
   # Root route - Choose any category to be the root
-  root 'meat#index'
+  root 'home#index'
 end
