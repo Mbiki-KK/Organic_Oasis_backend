@@ -24,7 +24,7 @@ end
 # Create fake data for Bakery
 10.times do
   Bakery.create(
-    name: Faker::Food.cake,
+    name: Faker::Cake.cake,
     price: Faker::Commerce.price(range: 1..100.0),
     image_url: Faker::Placeholdit.image,
     description: Faker::Food.description
@@ -32,9 +32,9 @@ end
 end
 
 # Create fake data for Spices
-5.times do
+10.times do
   Spices.create(
-    name: Faker::Food.spice,
+    name: Faker::Spice.spice,
     price: Faker::Commerce.price(range: 1..100.0),
     image_url: Faker::Placeholdit.image,
     description: Faker::Food.description
@@ -42,9 +42,9 @@ end
 end
 
 # Create fake data for Cereal
-5.times do
+10.times do
   Cereal.create(
-    name: Faker::Food.cereal,
+    name: Faker::Cereal.cereal,
     price: Faker::Commerce.price(range: 1..100.0),
     image_url: Faker::Placeholdit.image,
     description: Faker::Food.description
@@ -52,9 +52,9 @@ end
 end
 
 # Create fake data for Dairy
-5.times do
+10.times do
   Dairy.create(
-    name: Faker::Food.dish,
+    name: Faker::Dairy.dish,
     price: Faker::Commerce.price(range: 1..100.0),
     image_url: Faker::Placeholdit.image,
     description: Faker::Food.description
@@ -62,7 +62,7 @@ end
 end
 
 # Create fake data for Offers
-5.times do
+10.times do
   Offers.create(
     name: Faker::Commerce.product_name,
     price: Faker::Commerce.price(range: 1..100.0),
@@ -72,9 +72,9 @@ end
 end
 
 # Create fake data for VeggiesAndFruits
-5.times do
+10.times do
   VeggiesAndFruits.create(
-    name: Faker::Food.fruits,
+    name: Faker::Vegetables.fruits,
     price: Faker::Commerce.price(range: 1..100.0),
     image_url: Faker::Placeholdit.image,
     description: Faker::Food.description
