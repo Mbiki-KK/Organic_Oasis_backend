@@ -1,0 +1,196 @@
+[33mcommit 457a3f6a1ed4f1572568677a41bf342d22205adf[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 018de3e 688d99f
+Author: Cassie <cassierasugu@gmail.com>
+Date:   Sun Aug 6 23:06:25 2023 +0300
+
+    Merge branch 'main' of github.com:kongkabuu/Organic_Oasis_backend
+
+[33mcommit 018de3eb965a4f94c8b8a7a81a87755ff2db9149[m
+Author: Cassie <cassierasugu@gmail.com>
+Date:   Sun Aug 6 22:34:09 2023 +0300
+
+    changes
+
+[33mcommit 688d99ff01ea09937265fadac1894e4d47525e44[m
+Merge: 208a442 b4ef212
+Author: Mbiki-KK <127048956+Mbiki-KK@users.noreply.github.com>
+Date:   Thu Aug 3 12:14:19 2023 +0300
+
+    Merge pull request #11 from kongkabuu/8-adding-images-to-the-backend
+    
+    feat: added image upload functionality to product images
+
+[33mcommit b4ef212f703a593f96d8fe44ded4f84041ef4007[m[33m ([m[1;31morigin/8-adding-images-to-the-backend[m[33m)[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 12:13:10 2023 +0300
+
+    feat: added image upload functionality to product images
+
+[33mcommit 208a4428fad3f1fd169123cffe9586d418082c9c[m
+Merge: a95b6e9 3a0603d
+Author: Mbiki-KK <127048956+Mbiki-KK@users.noreply.github.com>
+Date:   Thu Aug 3 12:05:30 2023 +0300
+
+    Merge pull request #10 from kongkabuu/8-adding-images-to-the-backend
+    
+    8 adding images to the backend
+
+[33mcommit 3a0603dd07ca16489616cd61cfd3d168d1b2504f[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 12:04:49 2023 +0300
+
+    feat: added image upload functionality
+
+[33mcommit dda870d0089f1b1086f5e690a403429328132425[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 11:29:40 2023 +0300
+
+    feat: added uplaod functionality to products profile
+
+[33mcommit 06fd07bc343f9c916205ff7fd73611071f972923[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 11:26:58 2023 +0300
+
+    feat: added uplaod functionality to user profile
+
+[33mcommit a95b6e983666e0bca9745d1184325ffc3817deac[m
+Merge: 9fb974b eea2fe5
+Author: Mbiki-KK <127048956+Mbiki-KK@users.noreply.github.com>
+Date:   Thu Aug 3 10:48:39 2023 +0300
+
+    Merge pull request #9 from kongkabuu/8-adding-images-to-the-backend
+    
+    8 adding images to the backend
+
+[33mcommit eea2fe51f033a4e7178aac1b821691ffed808458[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 10:44:37 2023 +0300
+
+    feat:fixed the controllers to show only relevant info
+
+[33mcommit 17c22d40a7e1b781d26b2677853410a59a5cb9db[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 10:42:30 2023 +0300
+
+    feat: fixed categories controller to print only relevant info
+
+[33mcommit 9fb974b1b4036c75d31c5d3c68de7c9b0ad18bf5[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 10:27:10 2023 +0300
+
+    feat: authenticated categories
+
+[33mcommit 233871e7f75cefd2d05fa5ac74e63bdb3262e941[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 10:23:24 2023 +0300
+
+    feat: done with reviews controller
+
+[33mcommit a3f5553ef92e1ff56fa4adf026c376b01748fd3c[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 10:23:01 2023 +0300
+
+    feat: done with controllers
+
+[33mcommit 36140f2df1471f8cb43fef2e25c449900da800b7[m
+Merge: 4abe645 2dbf8d5
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Thu Aug 3 09:19:06 2023 +0300
+
+    feat: done
+
+[33mcommit 4abe6451f4ec8c41c05011627fc831d14853a1b7[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Wed Aug 2 12:44:58 2023 +0300
+
+    done
+
+[33mcommit 2dbf8d5b604049981422baf14fe632968f0c3bd1[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Wed Aug 2 12:36:42 2023 +0300
+
+    deleted unessesary migrations
+
+[33mcommit d1bb4f8ff27b6a552ff86cf8bb16803b88bf9ecf[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Wed Aug 2 12:35:42 2023 +0300
+
+    deleted migrations
+
+[33mcommit 9fac1164181326f056503ecf9c04a15ed12166d7[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Wed Aug 2 11:02:23 2023 +0300
+
+    deletd files
+
+[33mcommit 3c46d2a353e5fbd3a0b53aee1fb56a541b8ba850[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Tue Aug 1 01:28:09 2023 +0300
+
+    finally finished debugging
+
+[33mcommit 3e54c07d8f714fdd1d2712dec92bc59ef8b20c3c[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Mon Jul 31 23:19:29 2023 +0300
+
+    debugging
+
+[33mcommit e70cc02b07e1baa71a197045267ecec9c146259f[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Mon Jul 31 14:45:52 2023 +0300
+
+    added auth controleer
+
+[33mcommit 4301055021581db59b780427f2271f53b5a0fcbe[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Mon Jul 31 14:38:28 2023 +0300
+
+    fixed jwt errors
+
+[33mcommit 93b39e261987bc469edb15381ede5e924f43a941[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Mon Jul 31 14:11:40 2023 +0300
+
+    seeded the datebase
+
+[33mcommit 4e39f324b6438084ed7ff5c7c810dbb5d69f90fd[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Mon Jul 31 13:36:04 2023 +0300
+
+    deleted and clone new app
+
+[33mcommit 5a509db673a4d1dbf98d22d468e42ff792c2766b[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Mon Jul 31 11:56:08 2023 +0300
+
+    feat: added image to users and products
+
+[33mcommit a4945c1aa7601b9b849d77efa6bd31c72ab86303[m
+Author: Mbiki-KK <wawerumbiki@gmail.com>
+Date:   Mon Jul 31 03:02:20 2023 +0300
+
+    feat: initial part done
+
+[33mcommit a811af0ab872d1424813fcf00df8341b3068a7f2[m[33m ([m[1;31morigin/6-make-flowchart[m[33m)[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Thu Jul 27 10:08:36 2023 +0300
+
+    added gems
+
+[33mcommit e5ccb017bc5f1641bd5e4bb3f5588e3b09919233[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Thu Jul 27 10:00:08 2023 +0300
+
+    initialized a proper api rails app
+
+[33mcommit a0b5fbb32a0a59df6d5f4e350ec77bad9ee70143[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Thu Jul 27 09:55:01 2023 +0300
+
+    initialized new rails app
+
+[33mcommit c896f8da0d43dfed42c0e050453f68d2aac8ae4e[m
+Author: paul kabuu <kongkabuu9@gmail.com>
+Date:   Wed Jul 26 10:04:49 2023 +0300
+
+    first commit

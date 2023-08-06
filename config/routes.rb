@@ -7,13 +7,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index, :show, :create, :destroy]
   resources :products, only: [:index, :show, :create, :destroy]
   resources :users
-  resources :orders
-  resources :categories
 
   # Route for refreshing the JWT token
   post '/refresh', to: 'sessions#refresh'
-
-  # Image routes
-  post '/upload_image', to: 'images#upload_image'
-  post '/seller/products/:product_id/upload_image', to: 'seller/products#upload_image'
 end
