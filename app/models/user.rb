@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  mount_uploader :image, ImageUploader
   after_initialize :set_default_role
   enum role:[:user,:seller,:admin]
   has_secure_password
