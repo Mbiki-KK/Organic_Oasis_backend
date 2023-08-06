@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_214247) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_121818) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "desc"
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_214247) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -66,15 +67,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_214247) do
     t.string "email"
     t.string "password_digest"
     t.string "contacts"
+    t.string "address_value"
     t.string "user_type"
     t.integer "reviews_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "username"
-    t.string "street_address"
-    t.string "city"
-    t.string "postal_code"
     t.string "role", default: "user"
     t.index ["reviews_id"], name: "index_users_on_reviews_id"
   end
