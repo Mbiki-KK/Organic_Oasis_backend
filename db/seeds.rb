@@ -1,14 +1,5 @@
 require 'faker'
 
-# Clear existing data
-OrderItem.delete_all
-Order.delete_all
-Review.delete_all
-Product.delete_all
-User.delete_all
-Category.delete_all
-
-# Seed Categories
 categories = []
 5.times do
   categories << Category.create!(
@@ -17,7 +8,6 @@ categories = []
   )
 end
 
-# Seed Users
 users = []
 10.times do
   user = User.create!(
@@ -31,7 +21,6 @@ users = []
   )
   users << user
 end
-
 # Seed Sellers
 sellers = []
 2.times do
@@ -46,7 +35,6 @@ sellers = []
   )
   sellers << seller
 end
-
 # Seed Products
 products = []
 20.times do
@@ -58,10 +46,8 @@ products = []
     category: categories.sample, # Associate the product with a random category
     user: sellers.sample # Associate the product with a random seller
   )
-
   products << product
 end
-
 # Seed Reviews
 reviews = []
 50.times do
@@ -73,7 +59,6 @@ reviews = []
   )
   reviews << review
 end
-
 # Seed Orders and Order Items
 users.each do |user|
   order = Order.create!(
@@ -81,9 +66,7 @@ users.each do |user|
     order_date: Faker::Date.between(from: 1.year.ago, to: Date.today),
     total_amount: 0 # The actual total amount will be calculated based on order items
   )
-
   total_amount = 0 # Initialize the total_amount variable
-
   rand(1..5).times do
     product = products.sample
     quantity = rand(1..5)
@@ -95,6 +78,5 @@ users.each do |user|
     )
     total_amount += subtotal # Update the total_amount for each order item
   end
-
   order.update(total_amount: total_amount) # Update the total_amount for the order
 end
