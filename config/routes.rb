@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mpesas
   # Authentication routes
   post '/login', to: 'authentication#login'
   post '/register', to: 'users#create'
@@ -16,4 +17,8 @@ Rails.application.routes.draw do
   # Image routes
   post '/upload_image', to: 'images#upload_image'
   post '/seller/products/:product_id/upload_image', to: 'seller/products#upload_image'
+
+  # Mpesa Routes
+  post 'stkpush', to: 'mpesas#stkpush'
+  post 'stkquery', to: 'mpesas#stkquery'
 end

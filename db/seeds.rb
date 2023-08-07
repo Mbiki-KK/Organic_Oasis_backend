@@ -51,10 +51,12 @@ products = []
     price: Faker::Number.decimal(l_digits: 2),
     availability: 'In stock',
     category: categories.sample, # Associate the product with a random category
-    user: sellers.sample # Associate the product with a random seller
+    user: sellers.sample, # Associate the product with a random seller
+    image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['vegetables']) # Generate a random image URL using LoremFlickr (adjust size and search_terms as needed)
   )
   products << product
 end
+
 # Seed Reviews
 reviews = []
 50.times do

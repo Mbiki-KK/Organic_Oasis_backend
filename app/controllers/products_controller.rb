@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   def index
     @products = Product.all
 
@@ -33,7 +34,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.permit(:name, :desc, :price, :availability, :image, :category_id, :user_id)
+    params.require(:product).permit(:name, :desc, :price, :availability, :category_id, :image, :user_id)
   end
 
 end

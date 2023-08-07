@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_122605) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_07_154944) do
+  create_table "access_tokens", force: :cascade do |t|
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mpesas", force: :cascade do |t|
+    t.string "phoneNumber"
+    t.string "amount"
+    t.string "checkoutRequestID"
+    t.string "merchantRequestID"
+    t.string "mpesaReceiptNumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
