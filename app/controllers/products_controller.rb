@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_request, except: [:index, :show]
   def index
     @products = Product.all
 
@@ -31,9 +32,10 @@ class ProductsController < ApplicationController
   end
 
   private
+  def authenticate_request
 
   def product_params
     params.permit(:name, :desc, :price, :availability, :image, :category_id, :seller_id)
   end
-
+end
 end

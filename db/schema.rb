@@ -10,14 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_121818) do
-=======
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_122605) do
->>>>>>> 688d99ff01ea09937265fadac1894e4d47525e44
+ActiveRecord::Schema[7.0].define(version: 2023_08_08_212905) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.string "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,15 +39,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_122605) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "desc"
-    t.float "price"
-    t.string "availability"
-    t.integer "category_id"
-    t.integer "user_id", null: false
+    t.text "description"
+    t.decimal "price"
+    t.string "image"
+    t.integer "seller_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
-    t.index ["user_id"], name: "index_products_on_user_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -64,6 +59,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_122605) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "sellers", force: :cascade do |t|
+    t.string "name"
+    t.string "profile_pic"
+    t.string "contacts"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,14 +82,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_122605) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "username"
-    t.string "role", default: "user"
     t.index ["reviews_id"], name: "index_users_on_reviews_id"
   end
 
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"
-  add_foreign_key "products", "users"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "sellers"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
   add_foreign_key "users", "reviews", column: "reviews_id"

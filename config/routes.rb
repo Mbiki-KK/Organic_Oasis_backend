@@ -9,9 +9,14 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :categories
+  resources :products
+  resources :sellers
+
+
 
   # Route for refreshing the JWT token
   post '/refresh', to: 'sessions#refresh'
+  post 'seller_login', to: 'seller_authentication#login'
 
   # Image routes
   post '/upload_image', to: 'images#upload_image'
