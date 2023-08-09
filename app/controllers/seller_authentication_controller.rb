@@ -19,7 +19,7 @@ class SellerAuthenticationController < ApplicationController
 
   private
 
-  def login_params
-    params.permit(:email, :password)
-  end
+  # def login_params
+  #   params.permit(:email, :password)
+  # end
 end

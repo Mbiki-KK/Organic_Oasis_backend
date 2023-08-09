@@ -52,32 +52,3 @@ users = []
   users << user
 end
 
-# Seed Orders and Order Items
- # Create an array of users
-
-# users.each do |user|
-#   order = Order.create!(
-#     user: user,
-#     order_date: Faker::Date.between(from: 1.year.ago, to: Date.today),
-#     total_amount: 0
-#   )
-
-#   total_amount = 0
-
-#   rand(1..5).times do
-#     product = products.sample
-#     quantity = rand(1..5)
-#     subtotal = product.price.to_f * quantity
-#     order.order_items.create!(
-#       quantity: quantity,
-#       subtotal: subtotal,
-#       product: product
-#     )
-#     total_amount += subtotal
-#   end
-
-#   order.update(total_amount: total_amount)
-# end
-
-
-
