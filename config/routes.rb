@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   # Authentication routes
   post '/login', to: 'authentication#login'
   post '/register', to: 'users#create'
+  post '/sellers/register', to: 'sellers#create'
+  post '/seller/login', to: 'sellers/authentication#login'
 
   # RESTful routes for reviews, products, and users
   resources :reviews, only: [:index, :show, :create, :destroy]
   resources :products, only: [:index, :show, :create, :destroy]
-  resources :sellers, only: [:index]
+  resources :sellers, only: [:index, :show, :create, :destroy]
   resources :users
   resources :orders
   resources :categories
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
 
   # Route for refreshing the JWT token
   post '/refresh', to: 'sessions#refresh'
-  post 'seller_login', to: 'seller_authentication#login'
+
 
   # Image routes
   post '/upload_image', to: 'images#upload_image'
