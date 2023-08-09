@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  before_action :authenticate_request, except: :show
   def index
     @products = Product.all
 
@@ -14,11 +14,17 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
-      if product.save
-        render json: product, status: :ok
-      else
-        render json: { errors: "Cannot add product" }, status: :unprocessable_entity
-      end
+
+    if params[:product][:image] && params[:product][:image][:url]
+      image_url = params[:product][:image][:url]
+      product.image = URI.parse(image_url)
+    end
+
+    if product.save
+     render json: product, status: :ok
+    else
+     render json: { errors: "Cannot add product" }, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -27,8 +33,21 @@ class ProductsController < ApplicationController
         product.destroy
         head :no_content
       else
-        render json: {error: "Product not found"}
+        render json: { error: "Product not found"}
       end
+  end
+
+  def update
+    product = Product.find_by(id: params[:id])
+    if product
+      if product.update(product_params)
+        render json: product, status: :ok
+      else
+        render_validation_errors(product.errors.full_messages)
+      end
+    else
+      render_error("Product not found")
+    end
   end
 
   private
