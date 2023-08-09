@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   # RESTful routes for reviews, products, and users
   resources :reviews, only: [:index, :show, :create, :destroy]
   resources :products, only: [:index, :show, :create, :destroy]
+  resources :sellers, only: [:index]
   resources :users
   resources :orders
   resources :categories
   resources :products
-  resources :sellers
+
 
 
 
