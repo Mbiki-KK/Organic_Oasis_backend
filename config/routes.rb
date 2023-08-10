@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index, :show, :create, :destroy]
   resources :products, only: [:index, :show, :create, :destroy]
   resources :users
-  resources :orders
-  resources :categories
 
   # Route for refreshing the JWT token
   post '/refresh', to: 'sessions#refresh'
