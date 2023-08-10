@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_request, except: [:index, :show]
+  before_action :authenticate_request, except: [:index, :show, :create]
   def index
     @products = Product.all
 
@@ -13,14 +13,14 @@ class ProductsController < ApplicationController
   end
 
   def create
+    pp current_user
     product = Product.new(product_params)
-
-
+    # product.user = current_user # Assuming you have a method to get the current user
 
     if product.save
-     render json: product, status: :ok
+      render json: product, status: :ok
     else
-     render json: { errors: product.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: product.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -52,5 +52,6 @@ class ProductsController < ApplicationController
   def product_params
     params.permit(:name, :desc, :price, :availability, :category_id, :image, :user_id)
   end
+
 
 end

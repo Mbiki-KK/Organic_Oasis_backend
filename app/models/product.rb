@@ -1,8 +1,9 @@
 class Product < ApplicationRecord
-  mount_uploader :image, ImageUploader
+  include ImageUploader::Attachment(:image)
   belongs_to :category
-  belongs_to :user, foreign_key: :user_id
+  # belongs_to :user
   has_many :order_items
  has_many :reviews,dependent: :destroy
   has_many :orders, through: :order_items
+
 end

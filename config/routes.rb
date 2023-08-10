@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles
   resources :mpesas
   # Authentication routes
   post '/login', to: 'authentication#login'

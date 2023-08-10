@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_154944) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_10_113456) do
   create_table "access_tokens", force: :cascade do |t|
     t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.text "image_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,7 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_154944) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.text "image_data"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -96,9 +104,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_154944) do
     t.index ["reviews_id"], name: "index_users_on_reviews_id"
   end
 
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "products"
-  add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
