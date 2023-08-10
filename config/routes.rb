@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :products #, only: [:index, :show, :create, :destroy, :update]
   resources :users
   resources :orders
+  resources :order_items
   resources :categories
 
   # Route for refreshing the JWT token

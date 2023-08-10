@@ -1,5 +1,5 @@
 class AuthenticationController < ApplicationController
-  before_action :authenticate_request, except: :login, :create
+  before_action :authenticate_request, except: [:login, :create]
 
   def login
     @user = User.find_by_email(params[:email])
@@ -9,7 +9,8 @@ class AuthenticationController < ApplicationController
       render json: {
         token: token,
         exp: time.strftime("%m-%d-%Y %H:%M"),
-        username: @user.username
+        username: @user.username,
+        user_id: @user_id
       }, status: :ok
     else
       render json: { error: "unauthorized" }, status: :unauthorized

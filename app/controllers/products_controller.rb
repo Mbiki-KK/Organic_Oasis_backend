@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_request, except: :show
+  before_action :authenticate_request, except: [:index, :show]
   def index
     @products = Product.all
 
@@ -15,15 +15,12 @@ class ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
 
-    if params[:product][:image] && params[:product][:image][:url]
-      image_url = params[:product][:image][:url]
-      product.image = URI.parse(image_url)
-    end
+
 
     if product.save
      render json: product, status: :ok
     else
-     render json: { errors: "Cannot add product" }, status: :unprocessable_entity
+     render json: { errors: product.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -53,7 +50,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :desc, :price, :availability, :category_id, :image, :user_id)
+    params.permit(:name, :desc, :price, :availability, :category_id, :image, :user_id)
   end
 
 end

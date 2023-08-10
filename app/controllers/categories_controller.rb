@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_request, except: :index
+  before_action :authenticate_request, except: [:index, :show]
   def index
     categories = Category.all
 
-    render json: categories, except: [:created_at, :updated_at], include: :products
+    render json: categories, status: :ok
   end
 
   def show
