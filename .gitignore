@@ -27,3 +27,5 @@
 /config/master.key
 
 local_env.yml
+
+/config/credentials/production.key
