@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     if review.save
       render json: review
     else
-      render json: {error: "Review not found"} status: :not_found
+      render json: {error: "Review not found"}, status: :not_found
     end
   end
 
