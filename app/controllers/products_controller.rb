@@ -10,14 +10,11 @@ class ProductsController < ApplicationController
   end
   def create
     product = Product.new(product_params)
-    if params[:product][:image] && params[:product][:image][:url]
-      image_url = params[:product][:image][:url]
-      product.image = URI.parse(image_url)
-    end
+
     if product.save
-     render json: product, status: :ok
+      render json: product, status: :ok
     else
-     render json: { errors: "Cannot add product" }, status: :unprocessable_entity
+      render json: { errors: product.errors.full_messages }, status: :unprocessable_entity
     end
   end
   def destroy
@@ -41,7 +38,7 @@ class ProductsController < ApplicationController
       render_error("Product not found")
     end
   end
-  
+
   private
 
   def product_params
