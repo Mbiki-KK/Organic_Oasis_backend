@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :contacts
       t.string :address
       t.string :type
-      t.references :reviews, null: false, foreign_key: true
+      # t.references :review, foreign_key: true
 
       t.timestamps
     end

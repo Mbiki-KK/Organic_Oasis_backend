@@ -1,29 +1,25 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_request, except: [:index, :show, :create]
+  #before_action :authenticate_request, except: :show
   def index
     @products = Product.all
-
-    render json: @products, include: :category, except: [:created_at, :updated_at]
+    render json: @products, include: :category
   end
-
   def show
     @product = Product.find_by(id: params[:id])
-
     render json: @product
   end
-
   def create
-    pp current_user
     product = Product.new(product_params)
-    # product.user = current_user # Assuming you have a method to get the current user
-
+    if params[:product][:image] && params[:product][:image][:url]
+      image_url = params[:product][:image][:url]
+      product.image = URI.parse(image_url)
+    end
     if product.save
-      render json: product, status: :ok
+     render json: product, status: :ok
     else
-      render json: { errors: product.errors.full_messages }, status: :unprocessable_entity
+     render json: { errors: "Cannot add product" }, status: :unprocessable_entity
     end
   end
-
   def destroy
     product = Product.find_by(id: params[:id])
       if product
@@ -33,7 +29,6 @@ class ProductsController < ApplicationController
         render json: { error: "Product not found"}
       end
   end
-
   def update
     product = Product.find_by(id: params[:id])
     if product
@@ -46,12 +41,10 @@ class ProductsController < ApplicationController
       render_error("Product not found")
     end
   end
-
+  
   private
 
   def product_params
-    params.permit(:name, :desc, :price, :availability, :category_id, :image, :user_id)
+    params.require(:product).permit(:name, :desc, :price, :availability, :category_id, :image, :user_id)
   end
-
-
 end

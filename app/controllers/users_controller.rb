@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
   before_action :authenticate_request, except: %i[create index ]
   before_action :find_user, except: %i[create index]
-
   # GET /users
   def index
     @users = User.all
     render json: @users, status: :ok, except: [:password_digest, :created_at, :updated_at]
   end
-
   # GET /users/{username}
   def show
     render json: @user, status: :ok
   end
-
   # POST /users
   def create
     @user = User.new(user_params)
@@ -23,7 +20,6 @@ class UsersController < ApplicationController
              status: :unprocessable_entity
     end
   end
-
   # PUT /users/{username}
   def update
     unless @user.update(user_params)
@@ -31,7 +27,6 @@ class UsersController < ApplicationController
              status: :unprocessable_entity
     end
   end
-
   # DELETE /users/{username}
   def destroy
     @user.destroy
@@ -44,7 +39,7 @@ class UsersController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       render json: { errors: 'User not found' }, status: :not_found
   end
-
+  
   def user_params
     params.permit(
       :image, :name, :username, :email, :password, :password_confirmation

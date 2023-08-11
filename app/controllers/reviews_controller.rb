@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   def index
     reviews = Review.all
 
-    render json: reviews except: [:created_at, :updated_at]
+    render json: reviews
   end
 
   def show
@@ -22,13 +22,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find_by(id: params[:id])
-      if review
-        review.destroy
-        head :no_content
-      else
-        render json: {error: "Review not found"}
-      end
   end
 
 

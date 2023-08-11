@@ -11,16 +11,11 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_08_10_113456) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "access_tokens", force: :cascade do |t|
     t.string "token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.text "image_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,8 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_113456) do
   create_table "order_items", force: :cascade do |t|
     t.integer "quantity"
     t.integer "subtotal"
-    t.integer "order_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
@@ -54,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_113456) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "order_date"
     t.integer "total_amount"
     t.datetime "created_at", null: false
@@ -68,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_113456) do
     t.float "price"
     t.string "availability"
     t.integer "category_id"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "image_data"
@@ -78,8 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_113456) do
   create_table "reviews", force: :cascade do |t|
     t.string "comment"
     t.datetime "review_date"
-    t.integer "user_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
@@ -91,21 +86,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_113456) do
     t.string "email"
     t.string "password_digest"
     t.string "contacts"
+    t.string "address_value"
     t.string "user_type"
-    t.integer "reviews_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "username"
-    t.string "street_address"
-    t.string "city"
-    t.string "postal_code"
     t.string "role", default: "user"
-    t.index ["reviews_id"], name: "index_users_on_reviews_id"
   end
 
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
-  add_foreign_key "users", "reviews", column: "reviews_id"
 end
