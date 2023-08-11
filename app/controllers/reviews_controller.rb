@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
 
   def create
     review = Reviews.new(review_params)
-    if review
+    if review.save
       render json: review
     else
       render json: {error: "Review not found"} status: :not_found
