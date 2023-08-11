@@ -92,10 +92,6 @@ GEM
       reline (>= 0.3.1)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.8.1)
-    dotenv-rails (2.8.1)
-      dotenv (= 2.8.1)
-      railties (>= 3.2)
     erubi (1.12.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
@@ -214,7 +210,6 @@ DEPENDENCIES
   bcrypt
   carrierwave
   debug
-  dotenv-rails
   faker
   jwt
   pg
