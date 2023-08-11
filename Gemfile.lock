@@ -188,7 +188,6 @@ GEM
       netrc (~> 0.8)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
-    sqlite3 (1.6.3-x86_64-linux)
     ssrf_filter (1.1.1)
     thor (1.2.2)
     timeout (0.4.0)
@@ -217,7 +216,6 @@ DEPENDENCIES
   rack-cors
   rails (>= 7.0.0)
   rest-client
-  sqlite3 (~> 1.4)
 
 RUBY VERSION
    ruby 3.1.2p20
