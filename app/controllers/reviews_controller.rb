@@ -1,32 +1,33 @@
-# class ReviewsController < ApplicationController
-#   def index
-#     reviews = Review.all
+class ReviewsController < ApplicationController
+  before_action :authenticate_request, except: [:index, :show]
+  def index
+    reviews = Review.all
 
-#     render json: reviews
-#   end
+    render json: reviews
+  end
 
-#   def show
-#     review = Review.find_by(id: params[:id])
+  def show
+    review = Review.find_by(id: params[:id])
 
-#     render json: review
-#   end
+    render json: review
+  end
 
-#   def create
-#     review = Reviews.new(review_params)
-#     if review
-#       render json: review
-#     else
-#       render json: {error: "Review not found"} status: :not_found
-#     end
-#   end
+  def create
+    review = Reviews.new(review_params)
+    if review
+      render json: review
+    else
+      render json: {error: "Review not found"} status: :not_found
+    end
+  end
 
-#   def destroy
-#   end
+  def destroy
+  end
 
 
-#   private
+  private
 
-#   def review_params
-#     params.permit(:review, :reviewer_name)
-#   end
-# end
+  def review_params
+    params.permit(:review, :reviewer_name)
+  end
+end
