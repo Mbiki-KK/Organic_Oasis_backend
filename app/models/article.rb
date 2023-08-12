@@ -1,4 +1,4 @@
 class Article < ApplicationRecord
   include ImageUploader::Attachment(:image)
  validates :title, presence: true
- End
+end
