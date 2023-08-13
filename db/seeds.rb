@@ -1,19 +1,27 @@
-
 # Create categories (if applicable)
 vegetables = Category.create!(name: 'Vegetables')
 meat = Category.create!(name: 'Meat')
+cereals = Category.create!(name: 'Cereals')
+spice = Category.create!(name: 'Spice')
+bakery = Category.create!(name: 'Bakery')
+beverage = Category.create!(name: 'Beverage')
+dairy = Category.create!(name: 'Dairy')
 # Create sellers
 seller1 = Seller.create!(
   name: 'john',
   profile_pic: 'https://i.pinimg.com/564x/11/f8/3f/11f83f048f74b6548af28df643496532.jpg',
   contacts: '0277187387',
-  location: 'Kajiado'
+  location: 'Kajiado',
+  password: '123456',
+  username: 'johnwick'
 )
 seller2 = Seller.create!(
   name: 'luccyy2',
   profile_pic: 'https://i.pinimg.com/564x/a2/81/df/a281dfb618363d660167cb8e98f2a754.jpg',
   contacts: '0986859597',
-  location: 'NYC'
+  location: 'NYC',
+  password: '09876',
+  username: 'luccyanok'
 )
 # Create products associated with sellers and categories
 product1 = seller1.products.create!(
@@ -42,13 +50,12 @@ users = []
 10.times do
   user = User.create!(
     name: Faker::Name.unique.name,
-   email: Faker::Internet.unique.email,
+    email: Faker::Internet.unique.email,
     password: 'password',
     contacts: Faker::PhoneNumber.cell_phone,
     user_type: 'customer',
     username: Faker::Internet.unique.username,
     role: 'user' # Default role for regular users
- )
+  )
   users << user
 end
-
